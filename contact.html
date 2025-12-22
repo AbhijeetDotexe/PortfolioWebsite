@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Contact | Abhijeet Rana</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Contact Abhijeet Rana - Junior Backend Developer looking for opportunities">
+  
+  <link rel="preload" href="css/style.css" as="style">
+  <link rel="stylesheet" href="css/style.css">
+  
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🚀</text></svg>">
+  
+  <script src="js/app.js" defer></script>
+</head>
+
+<body>
+<header>
+  <nav class="nav">
+    <div class="logo">
+      <span class="logo-icon">🚀</span>
+      <h1>Abhijeet Rana</h1>
+    </div>
+    <div class="nav-links">
+      <a href="index.html" data-link class="nav-link">Home</a>
+      <a href="projects.html" data-link class="nav-link">Projects</a>
+      <a href="blog.html" data-link class="nav-link">Blog</a>
+      <a href="contact.html" data-link class="nav-link active">Contact</a>
+    </div>
+    <button class="menu-toggle" aria-label="Toggle menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </nav>
+</header>
+
+<main id="content">
+  <!-- CONTACT HERO -->
+  <section class="page-hero animate">
+    <h1 class="page-title">Let's Connect</h1>
+    <p class="page-subtitle">
+      I'm actively looking for backend development opportunities where I can 
+      learn, contribute, and grow as a developer.
+    </p>
+  </section>
+
+  <div class="contact-container">
+    <!-- CONTACT INFO -->
+    <section class="section animate">
+      <div class="contact-grid">
+        <div class="contact-info">
+          <h2 class="contact-title">Get in Touch</h2>
+          <p class="contact-description">
+            I'm excited about backend development and eager to join a team 
+            where I can apply my skills, learn from experienced developers, 
+            and contribute to meaningful projects.
+          </p>
+          
+          <div class="contact-details">
+            <div class="contact-item">
+              <div class="contact-icon">📧</div>
+              <div>
+                <div class="contact-item-label">Email</div>
+                <a href="mailto:abhijeet.rana@example.com" class="contact-item-value">abhijeet.rana@example.com</a>
+              </div>
+            </div>
+            
+            <div class="contact-item">
+              <div class="contact-icon">💼</div>
+              <div>
+                <div class="contact-item-label">LinkedIn</div>
+                <a href="https://linkedin.com/in/yourprofile" target="_blank" rel="noopener" class="contact-item-value">linkedin.com/in/abhijeetrana</a>
+              </div>
+            </div>
+            
+            <div class="contact-item">
+              <div class="contact-icon">🐙</div>
+              <div>
+                <div class="contact-item-label">GitHub</div>
+                <a href="https://github.com/yourusername" target="_blank" rel="noopener" class="contact-item-value">github.com/abhijeetrana</a>
+              </div>
+            </div>
+            
+            <div class="contact-item">
+              <div class="contact-icon">📍</div>
+              <div>
+                <div class="contact-item-label">Location</div>
+                <div class="contact-item-value">Open to Remote • Relocation</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- SIMPLE CONTACT FORM -->
+        <div class="contact-form-container">
+          <div class="form-intro">
+            <h3>Send me a message</h3>
+            <p>I'll respond within 24 hours.</p>
+          </div>
+          
+          <form id="contact-form" class="contact-form">
+            <div class="form-group">
+              <label for="name" class="form-label">Your Name</label>
+              <input type="text" id="name" name="name" class="form-input" placeholder="John Doe" required>
+            </div>
+            
+            <div class="form-group">
+              <label for="email" class="form-label">Email</label>
+              <input type="email" id="email" name="email" class="form-input" placeholder="john@example.com" required>
+            </div>
+            
+            <div class="form-group">
+              <label for="subject" class="form-label">Subject</label>
+              <select id="subject" name="subject" class="form-select" required>
+                <option value="" disabled selected>Select a topic</option>
+                <option value="job">Job Opportunity</option>
+                <option value="internship">Internship</option>
+                <option value="project">Project Collaboration</option>
+                <option value="question">Technical Question</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
+            
+            <div class="form-group">
+              <label for="message" class="form-label">Message</label>
+              <textarea id="message" name="message" rows="4" class="form-textarea" placeholder="Hello Abhijeet, I'd like to discuss..." required></textarea>
+            </div>
+            
+            <div class="form-footer">
+              <button type="submit" class="btn btn-primary btn-full">
+                Send Message
+              </button>
+            </div>
+          </form>
+          
+          <div id="form-success" class="form-success" hidden>
+            <div class="success-icon">✓</div>
+            <h3>Message Sent!</h3>
+            <p>Thanks for reaching out. I'll get back to you soon.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- LOOKING FOR SECTION -->
+    <section class="section animate">
+      <div class="section-header">
+        <h2 class="section-title">What I'm Looking For</h2>
+        <div class="section-divider"></div>
+      </div>
+      
+      <div class="opportunity-cards">
+        <div class="opportunity-card">
+          <h3>Junior Backend Roles</h3>
+          <ul>
+            <li>Backend Developer</li>
+            <li>API Developer</li>
+            <li>Node.js Developer</li>
+            <li>Full Stack Developer</li>
+          </ul>
+        </div>
+        
+        <div class="opportunity-card">
+          <h3>Internships</h3>
+          <ul>
+            <li>Backend Engineering Intern</li>
+            <li>Software Development Intern</li>
+            <li>DevOps Intern</li>
+            <li>6-month internships</li>
+          </ul>
+        </div>
+        
+        <div class="opportunity-card">
+          <h3>Learning Opportunities</h3>
+          <ul>
+            <li>Mentorship programs</li>
+            <li>Training positions</li>
+            <li>Apprenticeships</li>
+            <li>Graduate programs</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- AVAILABILITY -->
+    <section class="section animate">
+      <div class="availability-card">
+        <div class="availability-header">
+          <h3>Current Status</h3>
+          <div class="availability-status available">
+            <span class="status-dot"></span>
+            Actively Looking
+          </div>
+        </div>
+        
+        <div class="availability-details">
+          <p>
+            I'm currently seeking full-time positions, internships, or contract 
+            work where I can:
+          </p>
+          
+          <ul class="availability-list">
+            <li>Apply my backend development skills</li>
+            <li>Learn from experienced engineers</li>
+            <li>Contribute to real projects</li>
+            <li>Grow as a professional developer</li>
+          </ul>
+          
+          <div class="availability-note">
+            <p><strong>Note:</strong> I'm a quick learner, hard worker, and excited 
+            to contribute from day one. I'm open to remote work or relocation 
+            for the right opportunity.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</main>
+
+<footer>
+  <div class="footer-content">
+    <div class="footer-left">
+      <div class="footer-logo">
+        <span class="logo-icon">🚀</span>
+        <span class="footer-name">Abhijeet Rana</span>
+      </div>
+      <p class="footer-tagline">Junior Backend Developer • Ready to Learn & Contribute</p>
+    </div>
+    
+    <div class="footer-links">
+      <a href="index.html" data-link class="footer-link">Home</a>
+      <a href="projects.html" data-link class="footer-link">Projects</a>
+      <a href="blog.html" data-link class="footer-link">Blog</a>
+      <a href="contact.html" data-link class="footer-link active">Contact</a>
+    </div>
+  </div>
+  
+  <div class="footer-bottom">
+    <p>© 2025 Abhijeet Rana. Open to opportunities!</p>
+  </div>
+</footer>
+</body>
+</html>
