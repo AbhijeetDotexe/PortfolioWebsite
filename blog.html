@@ -5,13 +5,17 @@
   <title>Why Page Speed Beats Frameworks | Abhijeet Rana</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Why lightning-fast page speed matters more than using fancy frameworks like React or Next.js for most websites.">
-  
+  <!-- Add this with other meta tags -->
+  <meta name="format-detection" content="telephone=no">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <link rel="preload" href="css/style.css" as="style">
   <link rel="stylesheet" href="css/style.css">
   
   <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🚀</text></svg>">
   
   <script src="js/app.js" defer></script>
+
 </head>
 
 <body>
@@ -481,5 +485,35 @@
     <p class="footer-note">Built with vanilla HTML, CSS & JS. Total size: 28KB.</p>
   </div>
 </footer>
+<script>
+  // Fix for iOS viewport height
+  (function() {
+    function setVH() {
+      let vh = window.innerHeight * 0.01;
+      document.documentElement.style.setProperty('--vh', `${vh}px`);
+    }
+    
+    setVH();
+    window.addEventListener('resize', setVH);
+    window.addEventListener('orientationchange', setVH);
+  })();
+  
+  // Prevent zoom on input focus in iOS
+  document.addEventListener('DOMContentLoaded', function() {
+    if (/iPhone|iPad|iPod/.test(navigator.userAgent)) {
+      document.addEventListener('focus', function(event) {
+        if (event.target.tagName === 'INPUT' || event.target.tagName === 'TEXTAREA') {
+          document.body.style.fontSize = '16px';
+        }
+      }, true);
+      
+      document.addEventListener('blur', function(event) {
+        if (event.target.tagName === 'INPUT' || event.target.tagName === 'TEXTAREA') {
+          document.body.style.fontSize = '';
+        }
+      }, true);
+    }
+  });
+</script>
 </body>
 </html>

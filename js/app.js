@@ -1,4 +1,4 @@
-// app.js - Simplified for fresher portfolio
+// app.js - Updated with mobile fixes
 class PortfolioApp {
   constructor() {
     this.init();
@@ -9,6 +9,19 @@ class PortfolioApp {
     this.setupContactForm();
     this.setupAnimations();
     this.setupSmoothNavigation();
+    this.fixMobileViewport();
+  }
+
+  fixMobileViewport() {
+    // Fix for mobile viewport height issues
+    const setVH = () => {
+      const vh = window.innerHeight * 0.01;
+      document.documentElement.style.setProperty('--vh', `${vh}px`);
+    };
+    
+    setVH();
+    window.addEventListener('resize', setVH);
+    window.addEventListener('orientationchange', setVH);
   }
 
   setupMobileMenu() {
@@ -16,7 +29,8 @@ class PortfolioApp {
     const navLinks = document.querySelector('.nav-links');
     
     if (menuToggle && navLinks) {
-      menuToggle.addEventListener('click', () => {
+      menuToggle.addEventListener('click', (e) => {
+        e.stopPropagation();
         navLinks.classList.toggle('active');
         menuToggle.setAttribute('aria-expanded', 
           navLinks.classList.contains('active')
@@ -24,7 +38,7 @@ class PortfolioApp {
       });
     }
     
-    // Close menu when clicking outside
+    // Close menu when clicking outside or on a link
     document.addEventListener('click', (e) => {
       if (navLinks?.classList.contains('active') && 
           !e.target.closest('.nav')) {
@@ -32,6 +46,16 @@ class PortfolioApp {
         menuToggle?.setAttribute('aria-expanded', 'false');
       }
     });
+    
+    // Close menu when clicking on a nav link
+    if (navLinks) {
+      navLinks.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+          navLinks.classList.remove('active');
+          menuToggle?.setAttribute('aria-expanded', 'false');
+        });
+      });
+    }
   }
 
   setupContactForm() {
@@ -40,6 +64,10 @@ class PortfolioApp {
 
     contactForm.addEventListener('submit', (e) => {
       e.preventDefault();
+      
+      // Prevent double submission on mobile
+      if (contactForm.classList.contains('submitting')) return;
+      contactForm.classList.add('submitting');
       
       // Simple validation
       const inputs = contactForm.querySelectorAll('input, textarea, select');
@@ -56,6 +84,7 @@ class PortfolioApp {
       
       if (!isValid) {
         this.showMessage('Please fill in all required fields', 'error');
+        contactForm.classList.remove('submitting');
         return;
       }
       
@@ -76,6 +105,7 @@ class PortfolioApp {
         
         submitBtn.textContent = originalText;
         submitBtn.disabled = false;
+        contactForm.classList.remove('submitting');
         
         this.showMessage('Message sent successfully!', 'success');
       }, 1500);
@@ -95,12 +125,16 @@ class PortfolioApp {
       position: fixed;
       top: 20px;
       right: 20px;
+      left: 20px;
       padding: 12px 20px;
       border-radius: 6px;
       color: white;
       z-index: 1000;
       font-weight: 500;
       box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      text-align: center;
+      max-width: 400px;
+      margin: 0 auto;
     `;
     
     if (type === 'success') {
@@ -120,14 +154,19 @@ class PortfolioApp {
   }
 
   setupAnimations() {
-    // Simple scroll animations
+    // Use requestAnimationFrame for better performance on mobile
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
-          entry.target.classList.add('show');
+          requestAnimationFrame(() => {
+            entry.target.classList.add('show');
+          });
         }
       });
-    }, { threshold: 0.1 });
+    }, { 
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    });
     
     document.querySelectorAll('.animate').forEach(el => observer.observe(el));
   }
@@ -142,8 +181,9 @@ class PortfolioApp {
         
         const targetElement = document.querySelector(targetId);
         if (targetElement) {
+          const headerHeight = document.querySelector('header')?.offsetHeight || 80;
           window.scrollTo({
-            top: targetElement.offsetTop - 80,
+            top: targetElement.offsetTop - headerHeight,
             behavior: 'smooth'
           });
         }
@@ -153,6 +193,11 @@ class PortfolioApp {
 }
 
 // Initialize when page loads
-document.addEventListener('DOMContentLoaded', () => {
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', () => {
+    new PortfolioApp();
+  });
+} else {
+  // DOM already loaded
   new PortfolioApp();
-});
+}
