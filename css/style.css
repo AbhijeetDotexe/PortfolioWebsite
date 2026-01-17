@@ -743,6 +743,10 @@ main {
   font-size: 0.95rem;
 }
 
+.interest-list{
+  margin: 12px;
+}
+
 /* Availability */
 .availability-card {
   background: var(--bg-card);
